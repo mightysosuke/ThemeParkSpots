@@ -10,6 +10,21 @@
   </head>
 
   <body>
+
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
+      <div class="container">
+        <%= link_to 'D-Spots', '#' %>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%= link_to '登録', '#', class: 'text-black' %>
+          </li>
+          <li>
+            <%= link_to 'ログイン', '#', class: 'text-black' %>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
