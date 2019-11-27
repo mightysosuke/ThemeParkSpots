@@ -1,11 +1,12 @@
 <div class="top-hero-wrapper text-center">
   <div class="container top-hero-container">
     <div class="row">
+      <!-- ログインしていない場合、ログイン画面に遷移させる -->
       <div class="col-md-offset-3 col-md-3">
         <%= link_to 'スポットを見る', '#', class: 'btn btn-block btn-black' %>
       </div>
       <div class="col-md-3">
-        <%= link_to 'スポットを投稿する', '#',class: 'btn btn-block' %>
+        <%= link_to 'スポットを投稿する', new_spot_path,class: 'btn btn-block btn-black' %>
       </div>
     </div>
     <div class="map">

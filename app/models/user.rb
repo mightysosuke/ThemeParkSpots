@@ -16,4 +16,6 @@ class User < ApplicationRecord
     false
   end
 
+  has_many :spots
+
 end
