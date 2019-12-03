@@ -33,3 +33,18 @@
 <br>
 
 <%= link_to 'New Place', new_place_path %>
+
+<div id="map" style="width: 800px; height: 400px;"></div>
+
+<script>
+  handler = Gmaps.build('Google');
+  var latLng = new google.maps.LatLng( 35.6262641,139.8819781 ) ;
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setMapTypeId("satellite");
+    handler.getMap().setZoom(17);
+    handler.getMap().setCenter(latLng);
+  });
+</script>
