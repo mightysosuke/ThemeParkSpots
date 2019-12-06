@@ -5,10 +5,6 @@
 <%= link_to 'Back', places_path %>
 
 <div id="map" style="width: 800px; height: 400px;"></div>
-<ul>
-    <li>lat: <span id="lat"></span></li>
-    <li>lng: <span id="lng"></span></li>
-  </ul>
 
 <script>
 
@@ -47,8 +43,8 @@
   function getClickLatLng(lat_lng, map) {
 
     // 座標を表示
-    document.getElementById('lat').textContent = lat_lng.lat();
-    document.getElementById('lng').textContent = lat_lng.lng();
+    document.getElementById('lat').value = lat_lng.lat();
+    document.getElementById('lng').value = lat_lng.lng();
 
     // 座標の中心をずらす
     // http://syncer.jp/google-maps-javascript-api-matome/map/method/panTo/
