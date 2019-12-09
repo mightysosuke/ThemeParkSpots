@@ -6,6 +6,7 @@ class PlacesController < ApplicationController
   def index
     @places = Place.all
     gon.places = @places
+    # binding.pry
   end
 
   # GET /places/1
