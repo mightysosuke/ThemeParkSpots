@@ -1,17 +1,34 @@
+var marker = [];
+var infoWindow = [];
+var currentInfoWindow = null;
+
 function initViewMap() {
   // マップの初期化
   var map = displayMap();
   // gonを使用してplaceの値を取得
-
   for (var i in gon.places) {
     var lat = Number(gon.places[i].latitude);
     var lng = Number(gon.places[i].longitude);
-
     var latLng = {lat, lng};
 
-    var marker = new google.maps.Marker({
+    marker[i] = new google.maps.Marker({
       position: latLng,
       map: map
+    });
+
+    infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
+      content: gon.places[i].name// 吹き出しに表示する内容
+    });
+
+    markerEvent(i); // マーカーにクリックイベントを追加
+  }
+  function markerEvent(i) {
+    marker[i].addListener('click', function() { // マーカーをクリックしたとき
+      if (currentInfoWindow) {
+        currentInfoWindow.close();
+      }
+      infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+      currentInfoWindow = infoWindow[i];
     });
   }
 }
