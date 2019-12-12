@@ -10,6 +10,11 @@ function initViewMap() {
     var lat = Number(gon.places[i].latitude);
     var lng = Number(gon.places[i].longitude);
     var latLng = {lat, lng};
+    var name = gon.places[i].name;
+    var dsc = gon.places[i].description;
+    var content = name +
+                  '<br>' +
+                  dsc;
 
     marker[i] = new google.maps.Marker({
       position: latLng,
@@ -17,7 +22,7 @@ function initViewMap() {
     });
 
     infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
-      content: gon.places[i].name// 吹き出しに表示する内容
+      content: content // 名称と詳細
     });
 
     markerEvent(i); // マーカーにクリックイベントを追加
