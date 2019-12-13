@@ -7,7 +7,6 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
-      <th>Address</th>
       <th>Latitude</th>
       <th>Longitude</th>
       <th colspan="3"></th>
@@ -19,7 +18,6 @@
       <tr>
         <td><%= place.name %></td>
         <td><%= place.description %></td>
-        <td><%= place.address %></td>
         <td><%= place.latitude %></td>
         <td><%= place.longitude %></td>
         <td><%= link_to 'Show', place %></td>
@@ -36,15 +34,4 @@
 
 <div id="map" style="width: 800px; height: 400px;"></div>
 
-<script>
-  handler = Gmaps.build('Google');
-  var latLng = new google.maps.LatLng( 35.6262641,139.8819781 ) ;
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%= raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    handler.getMap().setMapTypeId("satellite");
-    handler.getMap().setZoom(17);
-    handler.getMap().setCenter(latLng);
-  });
-</script>
+<script src="//maps.google.com/maps/api/js?key=<%= Settings.google.api_key %>&callback=initViewMap" async defer></script>

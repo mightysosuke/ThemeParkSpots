@@ -5,16 +5,15 @@ class PlacesController < ApplicationController
   # GET /places.json
   def index
     @places = Place.all
+    gon.places = @places
+    # binding.pry
   end
 
   # GET /places/1
   # GET /places/1.json
   def show
-    @hash = Gmaps4rails.build_markers(@place) do |place, marker|
-      marker.lat place.latitude
-      marker.lng place.longitude
-      marker.infowindow place.name
-    end
+    gon.lat = @place.latitude
+    gon.lng = @place.longitude
   end
 
   # GET /places/new
