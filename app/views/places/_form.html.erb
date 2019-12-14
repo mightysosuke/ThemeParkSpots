@@ -34,6 +34,11 @@
     <%= form.label :longitude %>
     <%= form.text_field :longitude, id: "lng" %>
   </div>
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
+  <div class="field">
+
+  </div>
 
   <div class="actions">
     <%= form.submit %>
