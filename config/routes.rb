@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   get 'choices/new'
   resources :places
   get 'spots/new'

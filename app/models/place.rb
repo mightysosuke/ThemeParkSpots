@@ -7,4 +7,6 @@ class Place < ApplicationRecord
 
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode
+
+  has_many_attached :images
 end
