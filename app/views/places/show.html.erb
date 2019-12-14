@@ -20,11 +20,14 @@
   <%= @place.longitude %>
 </p>
 
-<% if @place.images.attached? %>
-  <% @place.images.each do |image| %>
-    <%= image_tag image %> <br>
+<div class="image">
+  <% if @place.images.attached? %>
+    <% @place.images.each do |image| %>
+      <%= image_tag image, class: :photo %> <br>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
 
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path,  data: {"turbolinks" => false} %>
