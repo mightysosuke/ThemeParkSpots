@@ -6,7 +6,13 @@ class PlacesController < ApplicationController
   def index
     @places = Place.all
     gon.places = @places
-    # binding.pry
+    gon.url = []
+    @places.each_with_index do |place, i|
+      if place.images.count != 0
+        gon.url[i] = url_for(place.images.first)
+      end
+    end
+
   end
 
   # GET /places/1
