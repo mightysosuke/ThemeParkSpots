@@ -8,9 +8,7 @@ class PlacesController < ApplicationController
     gon.places = @places
     gon.url = []
     @places.each_with_index do |place, i|
-      if place.images.count != 0
-        gon.url[i] = url_for(place.images.first)
-      end
+      gon.url[i] = url_for(place.images.first) if place.images.count != 0
     end
 
   end
