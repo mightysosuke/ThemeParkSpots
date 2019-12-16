@@ -6,15 +6,26 @@ function initViewMap() {
   // マップの初期化
   var map = displayMap();
   // gonを使用してplaceの値を取得
+
   for (var i in gon.places) {
     var lat = Number(gon.places[i].latitude);
     var lng = Number(gon.places[i].longitude);
     var latLng = {lat, lng};
     var name = gon.places[i].name;
     var dsc = gon.places[i].description;
-    var content = name +
-                  '<br>' +
-                  dsc;
+
+// イメージが登録されていない場合、ウインドウに表示しない
+    if (gon.url[i] == null) {
+      var content = '<h4>' + name + '</h4>' +
+                    '<br>' +
+                    dsc;
+    } else {
+      var content = '<h4>' + name + '</h4>' +
+                    '<br>' +
+                    dsc +
+                    '<br>' +
+                    '<img src="'+gon.url[i]+'" class="window-image" />'; // イメージのURLを取得して代入
+    }
 
     marker[i] = new google.maps.Marker({
       position: latLng,
