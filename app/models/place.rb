@@ -9,4 +9,5 @@ class Place < ApplicationRecord
   after_validation :reverse_geocode
 
   has_many_attached :images
+  belongs_to :area
 end
