@@ -6,4 +6,4 @@
 
 <div id="map" style="width: 800px; height: 400px;"></div>
 
-<script src="//maps.google.com/maps/api/js?key=<%= Settings.google.api_key %>&callback=initNewMap" async defer></script>
+<script src="//maps.google.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google, :api_key) %>&callback=initNewMap" async defer></script>
