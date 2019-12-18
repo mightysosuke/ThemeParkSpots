@@ -21,22 +21,10 @@
     <%= form.text_field :description %>
   </div>
 
-<!-- parkとarea
-  <div class="field">
-    <%= form.label :park %>
-    <%= form.collection_select :park_id, Park.all, :id, :name, :include_blank => true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :area %>
-    <%= form.collection_select :area_id, Area.all, :id, :name, :include_blank => true %>
-  </div> -->
-
   <div class="field">
     <%= form.label :park %>
     <%= form.collection_select :park_id, Park.all, :id, :name,  {prompt: "パークを選択してください"}, {class: 'park'} %>
   </div>
-
 
   <div class="field">
     <%= form.label :area %>
@@ -69,6 +57,9 @@
 
 
 <script type="text/javascript">
+
+  // 初期表示時に、エリア選択を不可にする
+  $('.area').prop("disabled", true);
 
   var $areas = $('.park'); //都道府県の要素を変数に入れます。
   var options = $('.area').find("option");
