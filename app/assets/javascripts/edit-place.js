@@ -1,5 +1,3 @@
-// データベースに登録されているエリアが選択されている状態にする
-
 // 初期表示時に、エリア選択を不可にする
 $('.edit-area').prop('disabled', true);
 
@@ -28,11 +26,7 @@ $('.edit-park').change(function() {
     //エリア選択肢の表示切り替え
   $.each(options,function(index,value){
     var area_option = $(value);
-
-    // if (index == 0) {
-    //   $(area_option[3]).prop('selected', true);
-    // }
-
+    
     if(area_option.data('val') == 'default'){
       //初期値選択肢用（-- エリア --）
       area_option.prop('selected', true);

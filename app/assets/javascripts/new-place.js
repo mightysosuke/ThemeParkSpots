@@ -6,8 +6,6 @@ var options = $('.new-area').find('option');
 
 $('.new-park').change(function() {
 
-  $(this).prop('selected', true);
-
     //エリアセレクトの初期化
   $.each(options,function(index,value){
     $(value).removeAttr('selected');
@@ -28,6 +26,7 @@ $('.new-park').change(function() {
     //エリア選択肢の表示切り替え
   $.each(options,function(index,value){
     var area_option = $(value);
+    
     if(area_option.data('val') == 'default'){
       //初期値選択肢用（-- エリア --）
       area_option.prop('selected', true);
