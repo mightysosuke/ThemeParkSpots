@@ -21,15 +21,31 @@
     <%= form.text_field :description %>
   </div>
 
+  <% if controller.action_name == 'new' %>
+
   <div class="field">
     <%= form.label :park %>
-    <%= form.collection_select :park_id, Park.all, :id, :name,  {prompt: "パークを選択してください"}, {class: 'park'} %>
+    <%= form.collection_select :park_id, Park.all, :id, :name,  {prompt: "パークを選択してください"}, {class: 'new-park'} %>
   </div>
 
   <div class="field">
     <%= form.label :area %>
-    <%= form.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}), {prompt: "エリアを選択してください"}, {class: 'area'} %>
+    <%= form.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}), {prompt: "エリアを選択してください"}, {class: 'new-area'} %>
   </div>
+
+  <% else %>
+
+  <div class="field">
+    <%= form.label :park %>
+    <%= form.collection_select :park_id, Park.all, :id, :name, {selected: place.area.park.id}, {class: 'edit-park'} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :area %>
+    <%= form.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}, {selected: place.area_id}), {class: 'edit-area'} %>
+  </div>
+
+  <% end %>
 
   <div class="field">
     <%= form.hidden_field :address %>
@@ -55,58 +71,8 @@
   </div>
 <% end %>
 
-
-<script type="text/javascript">
-
-  // 初期表示時に、エリア選択を不可にする
-  $('.area').prop("disabled", true);
-
-  var $areas = $('.park'); //都道府県の要素を変数に入れます。
-  var options = $('.area').find("option");
-
-  $('.park').change(function() {
-
-      //エリアセレクトの初期化
-    $.each(options,function(index,value){
-      $(value).removeAttr("selected");
-      if($(value).data("val") == "default"){
-          $(value).attr("selected","selected");
-      }
-      $(value).show();
-    });
-
-    //選択されたパークのvalueを取得し変数に入れる
-    var val1 = $(this).val();
-
-    //エリア選択肢カウンタ
-    var option_count = 0;
-    //エリア選択肢が１つだったとき用の保存変数
-    var option_select = "";
-
-      //エリア選択肢の表示切り替え
-    $.each(options,function(index,value){
-      var area_option = $(value);
-      if(area_option.data("val") == "default"){
-        //初期値選択肢用（-- エリア --）
-        area_option.attr("selected","selected");
-      }else if(area_option.data("val") == val1){
-        //選択されたパークに当てはまる場合はカウントを増やし、option_selectに格納
-        option_count++;
-        option_select = area_option;
-      }else{
-        //選択されたパークにあてはまらない場合は、隠す
-        area_option.hide();
-      }
-    });
-
-    //エリアの選択肢が１つしかない場合は、自動的に選択された状態に変更
-    if(option_count == 1){
-      option_select.attr("selected","selected");
-    }
-
-    //エリアセレクトを選択可能に
-    $('.area').prop("disabled", false);
-
-  });
-
-</script>
+<% if controller.action_name == 'new' %>
+  <%= javascript_include_tag 'new-place.js' %>
+<% else %>
+  <%= javascript_include_tag 'edit-place.js' %>
+<% end %>
