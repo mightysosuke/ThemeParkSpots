@@ -52,18 +52,20 @@
   </div>
 
   <div class="field">
-    <%#= form.label :latitude %>
     <%= form.hidden_field :latitude, id: "lat" %>
   </div>
 
   <div class="field">
-    <%#= form.label :longitude %>
     <%= form.hidden_field :longitude, id: "lng" %>
   </div>
+
+  <div class="field">
+    <%= form.hidden_field :user_id %>
+  </div>
+
+  <div class="field">
     <%= form.label :images %>
     <%= form.file_field :images, multiple: true %>
-  <div class="field">
-
   </div>
 
   <div class="actions">
