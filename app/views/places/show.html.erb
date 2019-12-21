@@ -1,27 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>名称</strong>
   <%= @place.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>紹介文</strong>
   <%= @place.description %>
 </p>
 
 <p>
-  <strong>Area:</strong>
+  <strong>エリア</strong>
   <%= @place.area.name %>
 </p>
 
 <p>
-  <strong>Latitude:</strong>
+  <strong>緯度</strong>
   <%= @place.latitude %>
 </p>
 
 <p>
-  <strong>Longitude:</strong>
+  <strong>経度</strong>
   <%= @place.longitude %>
 </p>
 
@@ -34,8 +34,8 @@
 </div>
 
 
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Back', places_path,  data: {"turbolinks" => false} %>
+<%= link_to '編集する', edit_place_path(@place) %> |
+<%= link_to '一覧に戻る', places_path,  data: {"turbolinks" => false} %>
 
 <div id="map" style="width: 800px; height: 400px;"></div>
 
