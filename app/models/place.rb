@@ -10,4 +10,5 @@ class Place < ApplicationRecord
 
   has_many_attached :images
   belongs_to :area
+  belongs_to :user
 end

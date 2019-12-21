@@ -32,7 +32,7 @@ class PlacesController < ApplicationController
   # POST /places
   # POST /places.json
   def create
-    @place = Place.new(place_params)
+    @place = current_user.places.new(place_params)
 
     respond_to do |format|
       if @place.save
@@ -77,6 +77,6 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:name, :description, :area_id, :address, :latitude, :longitude, images:[])
+      params.require(:place).permit(:user_id, :name, :description, :area_id, :address, :latitude, :longitude, images:[])
     end
 end
