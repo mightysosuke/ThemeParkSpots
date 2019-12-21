@@ -15,16 +15,6 @@
   <%= @place.area.name %>
 </p>
 
-<p>
-  <strong>緯度</strong>
-  <%= @place.latitude %>
-</p>
-
-<p>
-  <strong>経度</strong>
-  <%= @place.longitude %>
-</p>
-
 <div class="image">
   <% if @place.images.attached? %>
     <% @place.images.each do |image| %>
