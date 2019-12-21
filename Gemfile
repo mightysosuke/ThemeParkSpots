@@ -43,6 +43,8 @@ gem 'config'
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'gon'
+gem 'rails-i18n', '~> 5.1'
+gem 'devise-i18n'
 
 gem "aws-sdk-s3", require: false
 

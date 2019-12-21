@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      place: 場所
+      park: テーマパーク
+      area: エリア
+    attributes:
+      user:
+        id: ID
+        account_id: ユーザーID
+        created_at: 登録日時
+        updated_at: 更新日時
+        birthday: 生年月日
+        email: メールアドレス
+        salon_id: サロン
+        password: パスワード
+      place:
+        name: 名称
+        description: 紹介文
+        park: パーク
+        area: エリア
+        latitude: 緯度
+        longitude: 経度
+        images: 画像
