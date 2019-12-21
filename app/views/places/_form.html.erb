@@ -52,13 +52,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :latitude %>
-    <%= form.text_field :latitude, id: "lat" %>
+    <%#= form.label :latitude %>
+    <%= form.hidden_field :latitude, id: "lat" %>
   </div>
 
   <div class="field">
-    <%= form.label :longitude %>
-    <%= form.text_field :longitude, id: "lng" %>
+    <%#= form.label :longitude %>
+    <%= form.hidden_field :longitude, id: "lng" %>
   </div>
     <%= form.label :images %>
     <%= form.file_field :images, multiple: true %>
