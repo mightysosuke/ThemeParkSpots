@@ -42,7 +42,7 @@
 
   <div class="field">
     <%= form.label :area %>
-    <%= form.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}, {selected: place.area_id}), {class: 'edit-area'} %>
+    <%= form.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}, {selected: place.area_id}), {}, {class: 'edit-area'} %>
   </div>
 
   <% end %>
