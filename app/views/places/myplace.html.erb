@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My投稿</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>紹介文</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @places.each do |place| %>
+      <tr>
+        <td><%= place.name %></td>
+        <td><%= place.description %></td>
+        <td><%= link_to '詳細を見る', place %></td>
+        <td><%= link_to '編集する', edit_place_path(place) %></td>
+        <td><%= link_to '削除する', place, method: :delete, data: { confirm: '本当にこのスポットを削除してもよろしいですか？' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to '一覧に戻る', places_path,  data: {"turbolinks" => false} %>
+
+<br>
+
+<div id="map" style="width: 800px; height: 400px;"></div>
+
+<script src="//maps.google.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google, :api_key) %>&callback=initViewMap" async defer></script>

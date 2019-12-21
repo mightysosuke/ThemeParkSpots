@@ -20,6 +20,15 @@ class PlacesController < ApplicationController
     gon.lng = @place.longitude
   end
 
+  def myplace
+    @places = Place.where(user_id: current_user.id)
+    gon.places = @places
+    gon.url = []
+    @places.each_with_index do |place, i|
+      gon.url[i] = url_for(place.images.first) if place.images.count != 0
+    end
+  end
+
   # GET /places/new
   def new
     @place = Place.new
