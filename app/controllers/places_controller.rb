@@ -3,10 +3,13 @@ class PlacesController < ApplicationController
 
   # GET /places
   # GET /places.json
+  # 投稿一覧画面を表示
   def index
     @places = Place.all
     gon.places = @places
     gon.url = []
+
+    # 各placeのimageの1枚目のURLのみを取得
     @places.each_with_index do |place, i|
       gon.url[i] = url_for(place.images.first) if place.images.count != 0
     end
@@ -15,11 +18,13 @@ class PlacesController < ApplicationController
 
   # GET /places/1
   # GET /places/1.json
+  # 投稿詳細画面を表示
   def show
     gon.lat = @place.latitude
     gon.lng = @place.longitude
   end
 
+  # 自分の投稿の一覧を表示
   def myplace
     @places = Place.where(user_id: current_user.id)
     gon.places = @places
@@ -30,16 +35,19 @@ class PlacesController < ApplicationController
   end
 
   # GET /places/new
+  # 新しいインスタンスの生成
   def new
     @place = Place.new
   end
 
   # GET /places/1/edit
+  # 投稿編集画面を表示
   def edit
   end
 
   # POST /places
   # POST /places.json
+  # 新規投稿を作成
   def create
     @place = current_user.places.new(place_params)
 
@@ -56,6 +64,7 @@ class PlacesController < ApplicationController
 
   # PATCH/PUT /places/1
   # PATCH/PUT /places/1.json
+  # 投稿内容を更新
   def update
     respond_to do |format|
       if @place.update(place_params)
@@ -70,6 +79,7 @@ class PlacesController < ApplicationController
 
   # DELETE /places/1
   # DELETE /places/1.json
+  # 投稿を削除
   def destroy
     @place.destroy
     respond_to do |format|
