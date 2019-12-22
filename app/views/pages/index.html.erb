@@ -1,7 +1,6 @@
 <div class="top-hero-wrapper text-center">
   <div class="container top-hero-container">
     <div class="row">
-      <!-- ログインしていない場合、ログイン画面に遷移させる -->
       <% if user_signed_in? %>
         <div class="col-md-offset-3 col-md-3">
           <%= link_to 'スポットを見る', places_path, class: 'btn btn-block btn-black' %>

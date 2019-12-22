@@ -2,11 +2,11 @@ var marker = [];
 var infoWindow = [];
 var currentInfoWindow = null;
 
+// マーカーが一覧として表示されるマップを表示
 function initViewMap() {
-  // マップの初期化
   var map = displayMap();
-  // gonを使用してplaceの値を取得
 
+  // gonを使用してplaceの値を取得
   for (var i in gon.places) {
     var lat = Number(gon.places[i].latitude);
     var lng = Number(gon.places[i].longitude);
@@ -14,7 +14,7 @@ function initViewMap() {
     var name = gon.places[i].name;
     var dsc = gon.places[i].description;
 
-// イメージが登録されていない場合、ウインドウに表示しない
+    // イメージが登録されていない場合、ウインドウに表示しない
     if (gon.url[i] == null) {
       var content = '<h4>' + name + '</h4>' +
                     '<br>' +
@@ -27,30 +27,35 @@ function initViewMap() {
                     '<img src="'+gon.url[i]+'" class="window-image" />'; // イメージのURLを取得して代入
     }
 
+    // マーカーの追加
     marker[i] = new google.maps.Marker({
       position: latLng,
       map: map
     });
 
-    infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
-      content: content // 名称と詳細
+    // 吹き出しの追加
+    infoWindow[i] = new google.maps.InfoWindow({
+      content: content
     });
-
-    markerEvent(i); // マーカーにクリックイベントを追加
+    markerEvent(i);
   }
+
+  // マーカーのクリックイベント
   function markerEvent(i) {
-    marker[i].addListener('click', function() { // マーカーをクリックしたとき
+    // マーカーをクリックしたとき
+    marker[i].addListener('click', function() {
       if (currentInfoWindow) {
         currentInfoWindow.close();
       }
-      infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+      // 吹き出しを表示する
+      infoWindow[i].open(map, marker[i]);
       currentInfoWindow = infoWindow[i];
     });
   }
 }
 
+// 新規投稿を追加する時のマップを表示
 function initNewMap() {
-  // マップの初期化
   var map = displayMap();
 
   // クリックイベントを追加
@@ -77,6 +82,7 @@ function initNewMap() {
   });
 }
 
+// クリックした箇所の座標に合わせて中心をずらす
 function getClickLatLng(lat_lng, map) {
 
   // 座標を表示
@@ -84,10 +90,10 @@ function getClickLatLng(lat_lng, map) {
   document.getElementById('lng').value = lat_lng.lng();
 
   // 座標の中心をずらす
-  // http://syncer.jp/google-maps-javascript-api-matome/map/method/panTo/
   map.panTo(lat_lng);
 }
 
+// マップを表示するだけ
 function displayMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 17,
@@ -97,6 +103,7 @@ function displayMap() {
   return map;
 }
 
+// 投稿詳細画面のマップを表示
 function initShowMap() {
   var lat = Number(gon.lat);
   var lng = Number(gon.lng);
