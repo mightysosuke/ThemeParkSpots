@@ -16,8 +16,9 @@ h1, h2 {
 }
 
 .btn-white {
+  // color: #FF9E41; // オレンジ
   color: #fff;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 20px;
@@ -31,12 +32,13 @@ h1, h2 {
 .top-hero-wrapper {
   width: 100vw;
   height: 100vh;
-  // background-image: url('bg-top.png');
+  background-image: url('background_images/aquasphea.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-color: #f0f0f0;
+  // opacity: 0.8;
 }
 
 .top-hero-container {
