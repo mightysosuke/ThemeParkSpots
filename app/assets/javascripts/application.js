@@ -12,11 +12,8 @@
 //
 
 //= require jquery3
-//= require bootstrap-sprockets
-//= require rails-ujs
-
 //= require popper
-
+//= require rails-ujs
 //= require activestorage
 //= require underscore
 //= require gmaps/google

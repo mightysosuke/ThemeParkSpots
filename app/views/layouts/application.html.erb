@@ -9,38 +9,47 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= include_gon %>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <!-- <p class="notice"><%= notice %></p> -->
+    <!-- <p class="alert"><%= alert %></p> -->
 
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
       <div class="container">
-        <%= link_to 'D-Spots', root_path %>
-        <% if user_signed_in? %>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <%= link_to 'My投稿', places_myplace_path, class: "btn btn-dark" %>
-            </li>
-            <li>
-              <%= link_to 'プロフィール変更', edit_user_registration_path %>
-            </li>
-            <li>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <%= link_to 'D-Spots', root_path, class: "navbar-brand top-link" %>
+        <!-- navbar-collapseで画面幅に合わせて折り畳み -->
+        <!-- <div class="collapse navbar-collapse" id="navbarNavDropdown"> -->
+          <ul class="navbar-nav mr-auto">　
+            <li class="nav-item">
+              <a class="nav-link" href="#">このサイトについて</a>
             </li>
           </ul>
-        <% else %>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <%= link_to '登録', new_user_registration_path %>
-            </li>
-            <li>
-              <%= link_to 'ログイン', new_user_session_path %>
-            </li>
+          <ul class="navbar-nav">
+            <% if user_signed_in? %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><%= current_user.account_id %></a>
+                <div class="dropdown-menu">
+                  <%= link_to 'My投稿', places_myplace_path, class: "dropdown-item text-dark" %>
+                  <%= link_to 'プロフィール変更', edit_user_registration_path, class: "dropdown-item text-dark" %>
+                  <%= link_to 'ログアウト', destroy_user_session_path, class: "dropdown-item text-dark", method: :delete %>
+                </div>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to '登録', new_user_registration_path, class: "btn btn-orange px-3 min-vw-30 rounded-pill" %>
+              </li>
+              <li>
+                <%= link_to 'ログイン', new_user_session_path, class: "btn btn-inverse-orange min-vw-20 rounded-pill ml-4" %>
+              </li>
+            <% end %>
           </ul>
-        <% end %>
-      </div>
+        </div>
+      <!-- </div> -->
     </nav>
     <%= yield %>
 

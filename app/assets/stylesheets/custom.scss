@@ -2,18 +2,22 @@ h1, h2 {
   font-weight: 100;
 }
 
+body {
+  padding-top: 50px;
+}
+
 .window-image {
   width: 100px;
   height: auto;
 }
 
-.text-white {
-  color: #fff;
-}
-
-.text-black {
-  color: #000000
-}
+// .text-white {
+//   color: #fff;
+// }
+//
+// .text-black {
+//   color: #000000
+// }
 
 .btn-white {
   // color: #FF9E41; // オレンジ
@@ -55,6 +59,55 @@ h1, h2 {
 .form-control {
   height: 45px;
 }
+
+/* 通常のボタン色 */
+.btn-orange,
+.btn-orange.disabled, .btn-orange:disabled {
+  color: #fff;
+  background-color: #FF9E41;
+  border-color: #FF9E41;
+}
+
+/* focusされた時の枠線の色 */
+.btn-orange:focus, .btn-orange.focus,
+.btn-orange:not(:disabled):not(.disabled):active:focus, .btn-orange:not(:disabled):not(.disabled).active:focus,
+.show > .btn-orange.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+/* hover時（マウスカーソルを重ねた時）の色*/
+.btn-orange:hover {
+  color: #fff;
+  background-color: #FF8500;
+  border-color: #FF8500;
+}
+
+/* 通常のボタン色 */
+.btn-inverse-orange,
+.btn-inverse-orange.disabled, .btn-inverse-orange:disabled {
+  color: #FF9E41;
+  background-color: #fff;
+  // border-color: #FF9E41;
+  border: solid 1px #FF9E41;
+}
+
+/* focusされた時の枠線の色 */
+.btn-inverse-orange:focus, .btn-inverse-orange.focus,
+.btn-inverse-orange:not(:disabled):not(.disabled):active:focus, .btn-inverse-orange:not(:disabled):not(.disabled).active:focus,
+.show > .btn-inverse-orange.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+/* hover時（マウスカーソルを重ねた時）の色*/
+.btn-inverse-orange:hover {
+  color: #fff;
+  background-color: #FF8500;
+  border-color: #FF8500;
+}
+
+
+
+
 
 .users-new-wrapper {
   width: 100vw;
@@ -166,4 +219,11 @@ h1, h2 {
   width: 300px;
   height: auto;
   margin: 10px 0;
+}
+
+.top-link {
+  font-size: 20px;
+  display: block;
+  width: 100px;
+  height: 50px;
 }
