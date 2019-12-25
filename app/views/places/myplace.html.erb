@@ -2,32 +2,33 @@
 
 <h1>My投稿</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>ひとこと</th>
-      <th>くわしく</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div id="map" class="w-auto m-3"></div>
 
-  <tbody>
-    <% @places.each do |place| %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= place.name %></td>
-        <td><%= place.description %></td>
-        <td><%= link_to '詳細を見る', place %></td>
-        <td><%= link_to '編集する', edit_place_path(place) %></td>
-        <td><%= link_to '削除する', place, method: :delete, data: { confirm: '本当にこのスポットを削除してもよろしいですか？' } %></td>
+        <th>ひとこと</th>
+        <th>エリア</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<%= link_to '一覧に戻る', places_path,  data: {"turbolinks" => false} %>
+    <tbody>
+      <% @places.each do |place| %>
+        <tr>
+          <td class="min-vw-25"><%= place.name %></td>
+          <td class="w-25"><%= place.area.name %></td>
+          <td><%= link_to '詳細', place, class: "btn btn-orange mx-2" %>
+          <%= link_to '編集', edit_place_path(place), class: "btn btn-orange mx-2" %>
+          <%= link_to '削除', place, method: :delete, data: { confirm: '本当にこのスポットを削除してもよろしいですか？' }, class: "btn btn-orange mx-2" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<br>
-
-<div id="map" style="width: 800px; height: 400px;"></div>
+<%# 一覧に戻るボタンを残すかどうか検討 %>
+<%#= link_to '一覧に戻る', places_path,  data: {"turbolinks" => false} %>
 
 <script src="//maps.google.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google, :api_key) %>&callback=initViewMap" async defer></script>
