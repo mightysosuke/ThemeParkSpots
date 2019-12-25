@@ -4,30 +4,26 @@
 
 <div id="map" class="w-auto m-3"></div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>ひとこと</th>
-      <th>くわしく</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @places.each do |place| %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= place.name %></td>
-        <td><%= place.description %></td>
-        <td><%= link_to '詳細', place, class: "btn btn-orange" %></td>
+        <th>ひとこと</th>
+        <th>エリア</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to '投稿する', new_place_path %>
-
-
+    <tbody>
+      <% @places.each do |place| %>
+        <tr>
+          <td class="min-vw-25"><%= place.name %></td>
+          <td class="w-25"><%= place.area.name %></td>
+          <td class=""><%= link_to '詳細', place, class: "btn btn-orange" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <script src="//maps.google.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google, :api_key) %>&callback=initViewMap" async defer></script>
