@@ -16,8 +16,8 @@ ja:
         salon_id: サロン
         password: パスワード
       place:
-        name: 名称
-        description: 紹介文
+        name: ひとこと
+        description: くわしく
         park: パーク
         area: エリア
         latitude: 緯度
