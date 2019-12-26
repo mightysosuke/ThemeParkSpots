@@ -1,9 +1,10 @@
+<p id="notice"><%= notice %></p>
+
 <h1>新規スポットを投稿する</h1>
 
 <%= render 'form', place: @place %>
 
-<%= link_to '一覧に戻る', places_path, data: {"turbolinks" => false} %>
-
-<div id="map" style="width: 800px; height: 400px;"></div>
+<%# 一覧に戻るボタンを残すかどうか検討 %>
+<%#= link_to '一覧に戻る', places_path, data: {"turbolinks" => false} %>
 
 <script src="//maps.google.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google, :api_key) %>&callback=initNewMap" async defer></script>

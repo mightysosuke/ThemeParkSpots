@@ -1,4 +1,4 @@
-<%= form_with(model: place, local: true) do |form| %>
+<%= form_with(model: place, local: true) do |f| %>
   <% if place.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
@@ -11,62 +11,76 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group row">
+    <%= f.label :name, class: "col-md-1 col-form-label" %>
+    <%= f.text_field :name, class: "col-md-7 form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="form-group row">
+    <%= f.label :description, class: "col-md-1 col-form-label" %>
+    <%= f.text_area :description, class: "col-md-7 form-control" %>
   </div>
 
   <% if controller.action_name == 'new' %>
 
-  <div class="field">
-    <%= form.label :park %>
-    <%= form.collection_select :park_id, Park.all, :id, :name,  {prompt: "パークを選択してください"}, {class: 'new-park'} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :area %>
-    <%= form.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}), {prompt: "エリアを選択してください"}, {class: 'new-area'} %>
+  <div class="form-group row">
+    <%= f.label :park, class: "col-md-1 col-form-label" %>
+    <%= f.collection_select :park_id, Park.all, :id, :name,  {prompt: "パークを選択してください"}, {class: 'new-park col-md-3 form-control'} %>
+    <%= f.label :area, class: "col-md-1 col-form-label" %>
+    <%= f.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}), {prompt: "エリアを選択してください"}, {class: 'new-area col-md-3 form-control'} %>
   </div>
 
   <% else %>
 
-  <div class="field">
-    <%= form.label :park %>
-    <%= form.collection_select :park_id, Park.all, :id, :name, {selected: place.area.park.id}, {class: 'edit-park'} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :area %>
-    <%= form.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}, {selected: place.area_id}), {}, {class: 'edit-area'} %>
+  <div class="form-group row">
+    <%= f.label :park, class: "col-md-1 col-form-label" %>
+    <%= f.collection_select :park_id, Park.all, :id, :name, {selected: place.area.park.id}, {class: 'edit-park col-md-3 form-control'} %>
+    <%= f.label :area, class: "col-md-1 col-form-label" %>
+    <%= f.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}, {selected: place.area_id}), {}, {class: 'edit-area col-md-3 form-control'} %>
   </div>
 
   <% end %>
 
-  <div class="field">
-    <%= form.hidden_field :address %>
+  <div class="form-group">
+    <%= f.hidden_field :address %>
   </div>
 
-  <div class="field">
-    <%= form.hidden_field :latitude, id: "lat" %>
+  <div class="form-group">
+    <%= f.hidden_field :latitude, id: "lat" %>
   </div>
 
-  <div class="field">
-    <%= form.hidden_field :longitude, id: "lng" %>
+  <div class="form-group">
+    <%= f.hidden_field :longitude, id: "lng" %>
   </div>
 
-  <div class="field">
-    <%= form.label :images %>
-    <%= form.file_field :images, multiple: true %>
+  <div class="custom-file">
+    <%= f.label :images, class: "custom-file-label", data: {browse: '参照'} %>
+    <%= f.file_field :images, multiple: true ,class: "custom-file-input" %>
+
+
+
+
+    <!-- <input type="file" class="custom-file-input" id="customFile">
+    <label class="custom-file-label" for="customFile">ファイル選択...</label> -->
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= f.label :images %>
+    <%= f.file_field :images, multiple: true, class: "form-control-file" %>
   </div>
+
+  <% if controller.action_name == 'new' %>
+    <div id="map" style="width: 800px; height: 400px;" class="m-3"></div>
+  <% end %>
+
+  <div class="actions form-group">
+    <% if controller.action_name == 'new' %>
+      <%= f.submit '投稿する', class: "btn btn-orange" %>
+    <% else %>
+      <%= f.submit '更新する', class: "btn btn-orange" %>
+    <% end %>
+  </div>
+
 <% end %>
 
 <% if controller.action_name == 'new' %>
