@@ -1,7 +1,7 @@
 <%= form_with(model: place, local: true) do |f| %>
   <% if place.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
+      <!--h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2-->
 
       <ul>
       <% place.errors.full_messages.each do |message| %>
@@ -21,22 +21,20 @@
     <%= f.text_area :description, class: "col-md-7 form-control" %>
   </div>
 
-  <% if controller.action_name == 'new' %>
-
-  <div class="form-group row">
-    <%= f.label :park, class: "col-md-1 col-form-label" %>
-    <%= f.collection_select :park_id, Park.all, :id, :name,  {prompt: "パークを選択してください"}, {class: 'new-park col-md-3 form-control'} %>
-    <%= f.label :area, class: "col-md-1 col-form-label" %>
-    <%= f.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}), {prompt: "エリアを選択してください"}, {class: 'new-area col-md-3 form-control'} %>
-  </div>
-
-  <% else %>
-
+  <% if controller.action_name == 'update' %>
   <div class="form-group row">
     <%= f.label :park, class: "col-md-1 col-form-label" %>
     <%= f.collection_select :park_id, Park.all, :id, :name, {selected: place.area.park.id}, {class: 'edit-park col-md-3 form-control'} %>
     <%= f.label :area, class: "col-md-1 col-form-label" %>
     <%= f.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}, {selected: place.area_id}), {}, {class: 'edit-area col-md-3 form-control'} %>
+  </div>
+
+  <% else %>
+  <div class="form-group row">
+    <%= f.label :park, class: "col-md-1 col-form-label" %>
+    <%= f.collection_select :park_id, Park.all, :id, :name,  {prompt: "パークを選択してください"}, {class: 'new-park col-md-3 form-control'} %>
+    <%= f.label :area, class: "col-md-1 col-form-label" %>
+    <%= f.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}), {prompt: "エリアを選択してください"}, {class: 'new-area col-md-3 form-control'} %>
   </div>
 
   <% end %>
@@ -74,17 +72,17 @@
   <% end %>
 
   <div class="actions form-group">
-    <% if controller.action_name == 'new' %>
-      <%= f.submit '投稿する', class: "btn btn-orange" %>
-    <% else %>
+    <% if controller.action_name == 'update' %>
       <%= f.submit '更新する', class: "btn btn-orange" %>
+    <% else %>
+      <%= f.submit '投稿する', class: "btn btn-orange" %>
     <% end %>
   </div>
 
 <% end %>
 
-<% if controller.action_name == 'new' %>
-  <%= javascript_include_tag 'new-place.js' %>
-<% else %>
+<% if controller.action_name == 'update' %>
   <%= javascript_include_tag 'edit-place.js' %>
+<% else %>
+  <%= javascript_include_tag 'new-place.js' %>
 <% end %>
