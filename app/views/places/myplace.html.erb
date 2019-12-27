@@ -19,7 +19,7 @@
           <td class="w-25"><%= place.area.name %></td>
           <td><%= link_to '詳細', place, class: "btn btn-orange mx-2" %>
           <%= link_to '編集', edit_place_path(place), class: "btn btn-orange mx-2" %>
-          <%= link_to '削除', place, method: :delete, data: { confirm: '本当にこのスポットを削除してもよろしいですか？' }, class: "btn btn-orange mx-2" %></td>
+          <%= link_to '削除', place, method: :delete, data: { confirm: '本当にこのスポットを削除してもよろしいですか？' }, class: "btn btn-danger mx-2" %></td>
         </tr>
       <% end %>
     </tbody>
