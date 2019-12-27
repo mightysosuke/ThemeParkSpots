@@ -19,7 +19,10 @@
 
     <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
       <div class="container">
-        <%= link_to 'Spots', root_path, class: "navbar-brand top-link" %>
+        <%= link_to root_path do %>
+          <span><%= image_tag "logo.png", class: "navbar-brand logo" %></span>
+        <% end %>
+
         <!-- navbar-collapseで画面幅に合わせて折り畳み -->
         <!-- <div class="collapse navbar-collapse" id="navbarNavDropdown"> -->
           <ul class="navbar-nav mr-auto">　
