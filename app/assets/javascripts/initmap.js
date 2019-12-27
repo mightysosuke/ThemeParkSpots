@@ -16,15 +16,17 @@ function initViewMap() {
 
     // イメージが登録されていない場合、ウインドウに表示しない
     if (gon.url[i] == null) {
-      var content = '<h4>' + name + '</h4>' +
-                    '<br>' +
-                    dsc;
-    } else {
-      var content = '<h4>' + name + '</h4>' +
-                    '<br>' +
+      var content = '<div class="window-box"><h5 class="under">' + name + '</h5>' +
+                    '<div class="border rounded m-2 p-2"><p>' +
                     dsc +
-                    '<br>' +
-                    '<img src="'+gon.url[i]+'" class="window-image" />'; // イメージのURLを取得して代入
+                    '</p></div>' +
+                    '</div>';
+    } else {
+      var content = '<div class="window-box"><h5 class="under">' + name + '</h5>' +
+                    '<div class="border rounded m-2 p-2"><p>' +
+                    dsc +
+                    '</p></div>' +
+                    '<img src="'+gon.url[i]+'" class="window-image" /></div>'; // イメージのURLを取得して代入
     }
 
     // マーカーの追加
@@ -35,7 +37,8 @@ function initViewMap() {
 
     // 吹き出しの追加
     infoWindow[i] = new google.maps.InfoWindow({
-      content: content
+      content: content,
+      width: 250
     });
     markerEvent(i);
   }
