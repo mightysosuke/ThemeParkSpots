@@ -1,9 +1,14 @@
 h1, h2 {
   font-weight: 100;
+  letter-spacing: 2;
 }
 
 body {
   padding-top: 70px;
+}
+
+.place-head {
+  display: inline-block;
 }
 
 #map {
@@ -19,6 +24,15 @@ body {
 
 .dropdown-item:hover {
   background-color: #FFC07F;
+}
+
+.text-orange {
+  color: #FF9E41;
+}
+
+.bg-blue {
+  background-color: rgba( 64, 216, 255, 0.3 );
+  display: inline-block;
 }
 
 // .text-white {
