@@ -55,9 +55,8 @@
         </div>
       <!-- </div> -->
     </nav>
+    <%= render 'layouts/flashes' %>
     <div class="m-4">
-      <%= render 'layouts/flashes' %>
-
       <%= yield %>
       <%= javascript_include_tag 'alert.js' %>
     </div>
