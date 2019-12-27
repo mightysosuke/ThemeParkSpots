@@ -35,13 +35,14 @@ body {
   display: inline-block;
 }
 
-// .text-white {
-//   color: #fff;
-// }
-//
-// .text-black {
-//   color: #000000
-// }
+.window-box {
+  height: 200px;
+  width: 300px;
+}
+
+.under {
+  border-bottom: solid 3px #40D8FF;
+}
 
 .btn-white {
   // color: #FF9E41; // オレンジ
