@@ -26,7 +26,4 @@
   </table>
 </div>
 
-<%# 一覧に戻るボタンを残すかどうか検討 %>
-<%#= link_to '一覧に戻る', places_path,  data: {"turbolinks" => false} %>
-
 <script src="//maps.google.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google, :api_key) %>&callback=initViewMap" async defer></script>
