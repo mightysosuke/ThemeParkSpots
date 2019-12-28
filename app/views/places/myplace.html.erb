@@ -1,29 +1,31 @@
-<h1>My投稿</h1>
+<div class="container mt-4">
+  <h1>My投稿</h1>
 
-<div id="map" class="w-auto m-3"></div>
+  <div id="map" class="w-auto m-3"></div>
 
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ひとこと</th>
-        <th>エリア</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @places.each do |place| %>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
         <tr>
-          <td class="min-vw-25"><%= place.name %></td>
-          <td class="w-25"><%= place.area.name %></td>
-          <td><%= link_to '詳細', place, class: "btn btn-orange mx-2" %>
-          <%= link_to '編集', edit_place_path(place), class: "btn btn-orange mx-2" %>
-          <%= link_to '削除', place, method: :delete, data: { confirm: '本当にこのスポットを削除してもよろしいですか？' }, class: "btn btn-danger mx-2" %></td>
+          <th>ひとこと</th>
+          <th>エリア</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% @places.each do |place| %>
+          <tr>
+            <td class="min-vw-25"><%= place.name %></td>
+            <td class="w-25"><%= place.area.name %></td>
+            <td><%= link_to '詳細', place, class: "btn btn-orange mx-2" %>
+            <%= link_to '編集', edit_place_path(place), class: "btn btn-orange mx-2" %>
+            <%= link_to '削除', place, method: :delete, data: { confirm: '本当にこのスポットを削除してもよろしいですか？' }, class: "btn btn-danger mx-2" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <script src="//maps.google.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google, :api_key) %>&callback=initViewMap" async defer></script>
