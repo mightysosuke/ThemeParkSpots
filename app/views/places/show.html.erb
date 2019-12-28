@@ -1,32 +1,35 @@
-<div class="under">
-  <h2 class="place-head text-dark"><strong><%= @place.name %></strong></h2>
-  <p class="text-primary bg-blue place-head ml-4">
-    <%= @place.area.park.name %>/<%= @place.area.name %>
-  </p>
-</div>
+<div class="container mt-4">
+  <div class="under-blue">
+    <h2 class="place-head text-dark"><strong><%= @place.name %></strong></h2>
+    <p class="text-primary bg-blue place-head ml-4">
+      <%= @place.area.park.name %>/<%= @place.area.name %>
+    </p>
+  </div>
 
-<div class="border rounded m-2 p-2">
-  <p>
-    <%= simple_format(@place.description) %>
-  </p>
-</div>
+  <div class="border rounded m-2 p-2">
+    <p>
+      <%= simple_format(@place.description) %>
+    </p>
+  </div>
 
-<div class="image row mb-4">
-  <% if @place.images.attached? %>
-    <% @place.images.each do |image| %>
-      <%= image_tag image, class: "img-fluid col-md-3 w-25" %> <br>
+  <div class="image row mb-4">
+    <% if @place.images.attached? %>
+      <% @place.images.each do |image| %>
+        <%= image_tag image, class: "img-fluid col-md-3 w-25" %> <br>
+      <% end %>
     <% end %>
+  </div>
+
+  <div id="map" style="width: 800px; height: 400px;"></div>
+
+  <% if request.referer&.include?("/places/myplace") || request.referer&.end_with?("/places") %>
+    <%= link_to '一覧に戻る', :back,  data: {"turbolinks" => false} %>
+  <% elsif request.referer&.include?("/places/new") %>
+    <%= link_to '投稿一覧に戻る', places_path,  data: {"turbolinks" => false} %>
+  <% else %>
+    <%= link_to 'My投稿一覧に戻る', places_myplace_path,  data: {"turbolinks" => false} %>
   <% end %>
 </div>
 
-<div id="map" style="width: 800px; height: 400px;"></div>
-
-<% if request.referer&.include?("/places/myplace") || request.referer&.end_with?("/places") %>
-  <%= link_to '一覧に戻る', :back,  data: {"turbolinks" => false} %>
-<% elsif request.referer&.include?("/places/new") %>
-  <%= link_to '投稿一覧に戻る', places_path,  data: {"turbolinks" => false} %>
-<% else %>
-  <%= link_to 'My投稿一覧に戻る', places_myplace_path,  data: {"turbolinks" => false} %>
-<% end %>
 
 <script src="//maps.google.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google, :api_key) %>&callback=initShowMap" async defer></script>

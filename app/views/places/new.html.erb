@@ -1,9 +1,7 @@
-<h1>新規スポットを投稿する</h1>
+<div class="container mt-4">
+  <h1>新規スポットを投稿する</h1>
 
-
-<%= render 'form', place: @place %>
-
-<%# 一覧に戻るボタンを残すかどうか検討 %>
-<%#= link_to '一覧に戻る', places_path, data: {"turbolinks" => false} %>
+  <%= render 'form', place: @place %>
+</div>
 
 <script src="//maps.google.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google, :api_key) %>&callback=initNewMap" async defer></script>

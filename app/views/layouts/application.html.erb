@@ -16,52 +16,12 @@
   </head>
 
   <body>
-
-    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-      <div class="container">
-        <%= link_to root_path do %>
-          <span><%= image_tag "logo.png", class: "navbar-brand logo" %></span>
-        <% end %>
-
-        <!-- navbar-collapseで画面幅に合わせて折り畳み -->
-        <!-- <div class="collapse navbar-collapse" id="navbarNavDropdown"> -->
-          <ul class="navbar-nav mr-auto">　
-            <li class="nav-item">
-              <a class="nav-link" href="#">このサイトについて</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav">
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                <%= link_to '投稿一覧', places_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to '投稿する', new_place_path, class: "nav-link" %>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><%= current_user.account_id %></a>
-                <div class="dropdown-menu">
-                  <%= link_to 'My投稿', places_myplace_path, class: "dropdown-item text-dark" %>
-                  <%= link_to 'プロフィール変更', edit_user_registration_path, class: "dropdown-item text-dark" %>
-                  <%= link_to 'ログアウト', destroy_user_session_path, class: "dropdown-item text-dark", method: :delete %>
-                </div>
-              </li>
-            <% else %>
-              <li>
-                <%= link_to 'アカウント作成', new_user_registration_path, class: "btn btn-orange px-3 min-vw-30 rounded-pill" %>
-              </li>
-              <li>
-                <%= link_to 'ログイン', new_user_session_path, class: "btn btn-inverse-orange min-vw-20 rounded-pill ml-4" %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <!-- </div> -->
-    </nav>
     <%= render 'layouts/flashes' %>
-    <div class="m-4">
-      <%= yield %>
-      <%= javascript_include_tag 'alert.js' %>
-    </div>
+    <header>
+      <%= render 'layouts/navbar' %>
+    </header>
+
+    <%= yield %>
+    <%= javascript_include_tag 'alert.js' %>
   </body>
 </html>
