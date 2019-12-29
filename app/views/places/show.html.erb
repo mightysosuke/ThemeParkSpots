@@ -22,12 +22,14 @@
 
   <div id="map" style="width: 800px; height: 400px;"></div>
 
-  <% if request.referer&.include?("/places/myplace") || request.referer&.end_with?("/places") %>
-    <%= link_to '一覧に戻る', :back,  data: {"turbolinks" => false} %>
-  <% elsif request.referer&.include?("/places/new") %>
-    <%= link_to '投稿一覧に戻る', places_path,  data: {"turbolinks" => false} %>
-  <% else %>
+  <% if request.referer&.include?("/places/myplace") %>
     <%= link_to 'My投稿一覧に戻る', places_myplace_path,  data: {"turbolinks" => false} %>
+  <% elsif request.referer&.include?("/places/new") %>
+    <%= link_to '一覧に戻る', places_path,  data: {"turbolinks" => false} %>
+  <% elsif request.referer&.end_with?("/edit") %>
+    <%= link_to '一覧に戻る', places_myplace_path,  data: {"turbolinks" => false} %>
+  <% else %>
+    <%= link_to '投稿一覧に戻る', places_path,  data: {"turbolinks" => false} %>
   <% end %>
 </div>
 
