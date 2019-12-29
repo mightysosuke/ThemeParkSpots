@@ -51,19 +51,26 @@
     <%= f.hidden_field :longitude, id: "lng" %>
   </div>
 
-  <div class="custom-file row">
-    <%= f.file_field :images, multiple: true ,class: "custom-file-input" %>
-    <%= f.label "ファイルを選択", class: "custom-file-label col-md-7 offset-md-1", data: {browse: "参照"} %>
+  <div class="form-group row input-photo mb-2">
+    <div class="input-group">
+      <div class="custom-file col-md-6 offset-md-1">
+        <%= f.file_field :images, multiple: true ,class: "custom-file-input", id: "button-addon", aria: {describedby: "button-addon"} %>
+        <%= f.label "ファイルを選択...", class: "custom-file-label", for: "button-addon", data: {browse: "参照"} %>
+      </div>
+      <div class="input-group-append">
+        <button type="button" class="btn btn-outline-secondary reset" id="button-addon2">取消</button>
+      </div>
+    </div>
   </div>
 
   <% if controller.action_name == 'new' %>
   <div class="row">
-    <div id="map" class="col-md-6 offset-md-1 my-3"></div>
+    <div id="map" class="col-md-7 offset-md-1 my-4"></div>
   </div>
 
   <% end %>
 
-<div class="actions form-group">
+<div class="actions form-group mt-3">
   <% if request.referer&.include?("/places/myplace") %>
     <%= f.submit '更新する', class: "btn btn-orange" %>
   <% else %>
