@@ -81,7 +81,7 @@ function handleFileSelect(evt) {
 
 // ファイルの取消
 $('.reset').click(function(){
-    $(this).parent().prev().children('.custom-file-label').html('ファイル選択...');
+    $(this).parent().prev().children('.custom-file-label').html('ファイルを選択...');
     $('#preview').remove();
     $('.custom-file-input').val('');
 })
