@@ -20,8 +20,9 @@
     <header>
       <%= render 'layouts/navbar' %>
     </header>
-
-    <%= yield %>
-    <%= javascript_include_tag 'alert.js' %>
+    <main>
+      <%= yield %>
+      <%= javascript_include_tag 'alert.js' %>
+    </main>
   </body>
 </html>

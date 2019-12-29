@@ -5,12 +5,19 @@
   white-space: nowrap;
 }
 
+.alert {
+  margin-bottom: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 10000;
+}
+
 h1, h2 {
   font-weight: 100;
   letter-spacing: 2;
 }
 
-body {
+main {
   padding-top: 70px;
 }
 
@@ -160,13 +167,6 @@ body {
   color: #fff;
   background-color: #FF8500;
   border-color: #FF8500;
-}
-
-.alert {
-  margin-bottom: 0px;
-  position: fixed;
-  width: 100%;
-  z-index: 10000;
 }
 
 .navbar-transparent {
