@@ -43,6 +43,8 @@ class PlacesController < ApplicationController
   # GET /places/1/edit
   # 投稿編集画面を表示
   def edit
+    gon.lat = @place.latitude
+    gon.lng = @place.longitude
   end
 
   # POST /places
@@ -55,6 +57,7 @@ class PlacesController < ApplicationController
         format.html { redirect_to @place, notice: 'スポットが投稿されました' }
         format.json { render :show, status: :created, location: @place }
       else
+        # binding.pry
         format.html { render :new }
         format.json { render json: @place.errors, status: :unprocessable_entity }
       end

@@ -85,6 +85,43 @@ function initNewMap() {
   });
 }
 
+// 投稿を編集する時のマップを表示
+function initEditMap() {
+  var map = displayMap();
+
+  var lat = Number(gon.lat);
+  var lng = Number(gon.lng);
+  var latLng = {lat, lng};
+
+  marker = new google.maps.Marker({
+    position: latLng,
+    map: map
+  });
+
+  // クリックイベントを追加
+  map.addListener('click', function(e) {
+    getClickLatLng(e.latLng, map);
+  });
+
+  var marker;
+
+  // マーカーを設置
+  function placeMarker(lat_lng) {
+    if ( marker ) {
+      marker.setPosition(lat_lng);
+    } else {
+      marker = new google.maps.Marker({
+        position: lat_lng,
+        map: map
+      });
+    }
+  }
+
+  google.maps.event.addListener(map, 'click', function(e) {
+    placeMarker(e.latLng);
+  });
+}
+
 // クリックした箇所の座標に合わせて中心をずらす
 function getClickLatLng(lat_lng, map) {
 
