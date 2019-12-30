@@ -1,11 +1,17 @@
 <%= form_with(model: place, local: true) do |f| %>
   <% if place.errors.any? %>
+    <!-- <div id="error_explanation" class="alert alert-danger"> -->
     <div id="error_explanation">
       <!--h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2-->
 
       <ul>
       <% place.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <%# if message == "緯度を入力してください" %>
+          <%# break %>
+        <%# else %>
+          <li><%= message %></li>
+        <%# end %>
+
       <% end %>
       </ul>
     </div>
@@ -63,12 +69,9 @@
     </div>
   </div>
 
-  <% if controller.action_name == 'new' %>
   <div class="row">
     <div id="map" class="col-md-7 offset-md-1 my-4"></div>
   </div>
-
-  <% end %>
 
 <div class="actions form-group mt-3">
   <% if request.referer&.include?("/places/myplace") %>

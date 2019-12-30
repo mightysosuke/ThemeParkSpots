@@ -6,3 +6,5 @@
   <%= link_to '詳細を見る', @place %> |
   <%= link_to '一覧に戻る', :back %>
 </div>
+
+<script src="//maps.google.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google, :api_key) %>&callback=initEditMap" async defer></script>
