@@ -6,8 +6,53 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Park.create!(
+  [
+    {
+      park_id: 1,
+      name: '東京ディズニーシー'
+    },
+    {
+      park_id: 2,
+      name: '東京ディズニーランド'
+    }
+  ]
+)
+
 Area.create!(
   [
+    {
+      park_id: 1,
+      name: 'メディテレーニアンハーバー'
+    },
+    {
+      park_id: 1,
+      name: 'アメリカンウォーターフロント'
+    },
+    {
+      park_id: 1,
+      name: 'ポートディスカバリー'
+    },
+    {
+      park_id: 1,
+      name: 'ロストリバーデルタ'
+    },
+    {
+      park_id: 1,
+      name: 'アラビアンコースト'
+    },
+    {
+      park_id: 1,
+      name: 'マーメイドラグーン'
+    },
+    {
+      park_id: 1,
+      name: 'ミステリアスアイランド'
+    },
+    {
+      park_id: 1,
+      name: 'プラザ'
+    },
     {
       park_id: 2,
       name: 'ワールドバザール'
