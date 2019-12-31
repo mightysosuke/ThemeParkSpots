@@ -9,11 +9,9 @@
 Park.create!(
   [
     {
-      park_id: 1,
       name: '東京ディズニーシー'
     },
     {
-      park_id: 2,
       name: '東京ディズニーランド'
     }
   ]
