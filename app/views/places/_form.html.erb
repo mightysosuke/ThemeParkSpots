@@ -1,8 +1,6 @@
-<%= form_with(model: place, local: true) do |form| %>
+<%= form_with(model: place, local: true) do |f| %>
   <% if place.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
-
       <ul>
       <% place.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,31 +9,74 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group row">
+    <%= f.label :name, class: "col-md-1 col-form-label" %>
+    <%= f.text_field :name, class: "col-md-7" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+  <div class="form-group row">
+    <%= f.label :description, class: "col-md-1 col-form-label" %>
+    <%= f.text_area :description, class: "col-md-7" %>
   </div>
 
-  <div class="field">
-    <%= form.hidden_field :address %>
+  <% if controller.action_name == 'edit' %>
+  <div class="form-group row">
+    <%= f.label :park, class: "col-md-1 col-form-label" %>
+    <%= f.collection_select :park_id, Park.all, :id, :name, {selected: place.area.park.id}, {class: 'edit-park col-md-3'} %>
+    <%= f.label :area, class: "col-md-1 col-form-label" %>
+    <%= f.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}, {selected: place.area_id}), {}, {class: 'edit-area col-md-3'} %>
   </div>
 
-  <div class="field">
-    <%= form.label :latitude %>
-    <%= form.text_field :latitude, id: "lat" %>
+  <% else %>
+  <div class="form-group row">
+    <%= f.label :park, class: "col-md-1 col-form-label" %>
+    <%= f.collection_select :park_id, Park.all, :id, :name,  {prompt: "パークを選択してください"}, {class: 'new-park col-md-3'} %>
+    <%= f.label :area, class: "col-md-1 col-form-label" %>
+    <%= f.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}), {prompt: "エリアを選択してください"}, {class: 'new-area col-md-3'} %>
   </div>
 
-  <div class="field">
-    <%= form.label :longitude %>
-    <%= form.text_field :longitude, id: "lng" %>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.hidden_field :address %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= f.hidden_field :latitude, id: "lat" %>
   </div>
+
+  <div class="form-group">
+    <%= f.hidden_field :longitude, id: "lng" %>
+  </div>
+
+  <div class="form-group row input-photo mb-2">
+    <div class="input-group">
+      <div class="custom-file col-md-6 offset-md-1">
+        <%= f.file_field :images, multiple: true ,class: "custom-file-input", id: "button-addon", aria: {describedby: "button-addon"} %>
+        <%= f.label "ファイルを選択...", class: "custom-file-label", for: "button-addon", data: {browse: "参照"} %>
+      </div>
+      <div class="input-group-append">
+        <button type="button" class="btn btn-outline-secondary reset" id="button-addon2">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="map" class="col-md-7 offset-md-1 my-4"></div>
+  </div>
+
+<div class="actions form-group mt-3">
+  <% if request.referer&.include?("/places/myplace") %>
+    <%= f.submit '更新する', class: "btn btn-orange" %>
+  <% else %>
+    <%= f.submit '投稿する', class: "btn btn-orange" %>
+  <% end %>
+</div>
+
+<% end %>
+
+<% if controller.action_name == 'edit' %>
+  <%= javascript_include_tag 'edit-place.js' %>
+<% else %>
+  <%= javascript_include_tag 'new-place.js' %>
 <% end %>

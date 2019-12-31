@@ -1,6 +1,10 @@
-<h1>Editing Place</h1>
+<div class="container my-4">
+  <h1>スポットを編集する</h1>
 
-<%= render 'form', place: @place %>
+  <%= render 'form', place: @place %>
 
-<%= link_to 'Show', @place %> |
-<%= link_to 'Back', places_path %>
+  <%= link_to '詳細を見る', @place %> |
+  <%= link_to '一覧に戻る', :back %>
+</div>
+
+<script src="//maps.google.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google, :api_key) %>&callback=initEditMap" async defer></script>

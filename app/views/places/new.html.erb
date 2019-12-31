@@ -1,9 +1,7 @@
-<h1>New Place</h1>
+<div class="container my-4">
+  <h1>新規スポットを投稿する</h1>
 
-<%= render 'form', place: @place %>
+  <%= render 'form', place: @place %>
+</div>
 
-<%= link_to 'Back', places_path, data: {"turbolinks" => false} %>
-
-<div id="map" style="width: 800px; height: 400px;"></div>
-
-<script src="//maps.google.com/maps/api/js?key=<%= Settings.google.api_key %>&callback=initNewMap" async defer></script>
+<script src="//maps.google.com/maps/api/js?key=<%= Rails.application.credentials.dig(:google, :api_key) %>&callback=initNewMap" async defer></script>
