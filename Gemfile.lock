@@ -371,7 +371,7 @@ DEPENDENCIES
   pry-doc
   pry-rails
   pry-stack_explorer
-  puma (~> 3.12)
+  puma (>= 3.12.2)
   rails (~> 5.2.3)
   rails-i18n (~> 5.1)
   rename
