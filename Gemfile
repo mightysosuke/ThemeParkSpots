@@ -47,6 +47,8 @@ gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 gem "aws-sdk-s3", require: false
 
