@@ -1,12 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :authentication_keys => [:account_id]
-
-  validates :name, presence: true
-  validates :account_id, presence: true, uniqueness: true, format: { with: /\A[a-zA-Z0-9_\-.]{3,15}\z/ }
-  validates :email, presence: true
+  devise :database_authenticatable, :registerable, :omniauthable,
+         :recoverable, :rememberable, :validatable
 
   def email_required?
     false
@@ -15,6 +11,31 @@ class User < ApplicationRecord
     false
   end
 
+  def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+
+    unless user
+      user = User.create(
+        uid:      auth.uid,
+        provider: auth.provider,
+        email:    User.dummy_email(auth),
+        password: Devise.friendly_token[0, 20],
+        image: auth.info.image,
+        name: auth.info.name,
+        nickname: auth.info.nickname,
+        location: auth.info.location
+      )
+    end
+
+    user
+  end
+
   has_many :places
+
+  private
+
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
+  end
 
 end
