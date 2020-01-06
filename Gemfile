@@ -49,6 +49,7 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'font-awesome-sass', '~> 5.4.1'
 
 gem "aws-sdk-s3", require: false
 

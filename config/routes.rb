@@ -9,12 +9,14 @@ Rails.application.routes.draw do
 
   get 'choices/new'
   get 'spots/new'
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   get 'pages/index'
   get 'places/myplace'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-
 
   resources :comments
   resources :places
