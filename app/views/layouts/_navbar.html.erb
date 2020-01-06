@@ -18,7 +18,7 @@
           <%= link_to '投稿する', new_place_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><%= current_user.account_id %></a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><%= current_user.nickname %></a>
           <div class="dropdown-menu">
             <%= link_to 'My投稿', places_myplace_path, class: "dropdown-item text-dark" %>
             <%= link_to 'プロフィール変更', edit_user_registration_path, class: "dropdown-item text-dark" %>
@@ -27,7 +27,7 @@
         </li>
       <% else %>
         <li>
-          <%= link_to 'アカウント作成', new_user_registration_path, class: "btn btn-orange px-3 min-vw-30 rounded-pill" %>
+          <%= link_to '新規登録', new_user_registration_path, class: "btn btn-orange px-3 min-vw-30 rounded-pill" %>
         </li>
         <li>
           <%= link_to 'ログイン', new_user_session_path, class: "btn btn-inverse-orange min-vw-20 rounded-pill ml-4" %>

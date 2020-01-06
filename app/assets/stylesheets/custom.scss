@@ -147,6 +147,28 @@ main {
 }
 
 /* 通常のボタン色 */
+.btn-twitter,
+.btn-twitter.disabled, .btn-twitter:disabled {
+  color: #fff;
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+/* focusされた時の枠線の色 */
+.btn-twitter:focus, .btn-twitter.focus,
+.btn-twitter:not(:disabled):not(.disabled):active:focus, .btn-twitter:not(:disabled):not(.disabled).active:focus,
+.show > .btn-twitter.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+/* hover時（マウスカーソルを重ねた時）の色*/
+.btn-twitter:hover {
+  color: #fff;
+  background-color: #1891ED;
+  border-color: #1891ED;
+}
+
+/* 通常のボタン色 */
 .btn-orange,
 .btn-orange.disabled, .btn-orange:disabled {
   color: #fff;
