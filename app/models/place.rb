@@ -5,7 +5,7 @@ class Place < ApplicationRecord
   validates :description, presence: true
   validates :latitude, presence: true
   validates :longitude, presence: true
-  # validates :images, presence: { message: "をアップロードしてください" }
+  validates :images, presence: { message: "をアップロードしてください" }
 
   after_validation :remove_unnecessary_error_messages
 
