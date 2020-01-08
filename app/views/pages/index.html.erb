@@ -5,7 +5,11 @@
         <div class="top-phrase bg-white mt-4 p-2">
           <h1 class="mb-4"><strong>テーマパークをもっと楽しもう！</strong></h1>
           <p class="lead">あなたしか知らないスポットや<br/>お気に入りの場所を共有してみませんか？</p>
-          <%= link_to '新規登録', new_user_registration_path, class: "btn btn-orange px-3 mb-4 min-vw-30 rounded-pill" %>
+          <% if user_signed_in? %>
+            <%= link_to '投稿する', new_place_path, class: "btn btn-orange px-3 mb-4 min-vw-30 rounded-pill" %>
+          <% else %>
+            <%= link_to '新規登録', new_user_registration_path, class: "btn btn-orange px-3 mb-4 min-vw-30 rounded-pill" %>
+          <% end %>
         </div>
       </div>
     </div>
