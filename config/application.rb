@@ -25,5 +25,12 @@ module ThemeParkSpots
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
 
     config.assets.initialize_on_precompile = false
+
+    ### Railsが表示の際に扱うタイムゾーン
+    config.time_zone = 'Tokyo'
+
+    ### Rails(Activerecord)がDBへのRead・Writeを行う際タイムゾーン
+    config.active_record.default_timezone = :local
+
   end
 end
