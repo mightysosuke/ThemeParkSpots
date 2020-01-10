@@ -52,6 +52,7 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: theme_park_spots_production
-  username: theme_park_spots
-  password: <%= ENV['theme_park_spots_DATABASE_PASSWORD'] %>
+  database: theme_park_spots_development
+  # database: theme_park_spots_production
+  # username: theme_park_spots
+  # password: <%= ENV['theme_park_spots_DATABASE_PASSWORD'] %>
