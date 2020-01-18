@@ -4,41 +4,47 @@
       <span><%= image_tag "logo.png", class: "navbar-brand logo" %></span>
     <% end %>
 
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to 'このサイトについて', pages_index_path, class: "nav-link" %>
-        </li>
-      <% else %>
-      <li class="nav-item">
-        <%= link_to '投稿を見る', places_path, class: "nav-link" %>
-      </li>
-      <% end %>
-    </ul>
-    <ul class="navbar-nav">
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to '投稿一覧', places_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to '投稿する', new_place_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><%= current_user.nickname %></a>
-          <div class="dropdown-menu">
-            <%= link_to 'My投稿', places_myplace_path, class: "dropdown-item text-dark" %>
-            <%= link_to 'プロフィール変更', edit_user_registration_path, class: "dropdown-item text-dark" %>
-            <%= link_to 'ログアウト', destroy_user_session_path, class: "dropdown-item text-dark", method: :delete %>
-          </div>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to '新規登録', new_user_registration_path, class: "btn btn-orange px-3 min-vw-30 rounded-pill" %>
-        </li>
-        <li>
-          <%= link_to 'ログイン', new_user_session_path, class: "btn btn-inverse-orange min-vw-20 rounded-pill ml-4" %>
-        </li>
-      <% end %>
-    </ul>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsContents" aria-controls="navbarsContents" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsContents">
+      <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'このサイトについて', pages_index_path, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to '投稿を見る', places_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to '投稿一覧', places_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to '投稿する', new_place_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><%= current_user.nickname %></a>
+            <div class="dropdown-menu">
+              <%= link_to 'My投稿', places_myplace_path, class: "dropdown-item text-dark" %>
+              <%= link_to 'プロフィール変更', edit_user_registration_path, class: "dropdown-item text-dark" %>
+              <%= link_to 'ログアウト', destroy_user_session_path, class: "dropdown-item text-dark", method: :delete %>
+            </div>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to '新規登録', new_user_registration_path, class: "btn btn-orange px-3 min-vw-30 rounded-pill" %>
+          </li>
+          <li>
+            <%= link_to 'ログイン', new_user_session_path, class: "btn btn-inverse-orange min-vw-20 rounded-pill ml-4" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
