@@ -1,3 +1,4 @@
+
 .custom-file {
   overflow: hidden;
 }
@@ -102,21 +103,6 @@ main {
   margin: auto;
   background-color: rgba(255,255,255,0.8);
 }
-@media (max-width: 767.98px) {
-  .jumbotron {
-    height: 70vh;
-  }
-
-  .top-phrase {
-    width: 80vw;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .jumbotron {
-    height: 70vh;
-  }
-}
 
 .under-blue {
   border-bottom: solid 3px #40D8FF;
@@ -176,6 +162,7 @@ main {
 .btn-twitter,
 .btn-twitter.disabled,
 .btn-twitter:disabled {
+  width: 50vw;
   color: #fff;
   background-color: #55acee;
   border-color: #55acee;
@@ -277,4 +264,23 @@ main {
   display: block;
   width: 100px;
   height: 50px;
+}
+@media (max-width: 767.98px) {
+  .jumbotron {
+    height: 70vh;
+  }
+
+  .top-phrase {
+    width: 80vw;
+  }
+
+  .btn-twitter {
+    width: 80vw;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .jumbotron {
+    height: 70vh;
+  }
 }
