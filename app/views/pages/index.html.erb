@@ -1,23 +1,23 @@
 <div class="top-page-wrapper text-center">
   <div class="jumbotron jumbotron-fluid">
-    <!-- <div class="row"> -->
-      <!-- <div class="offset-md-1 col-md-6"> -->
-        <div class="top-phrase mt-4 p-2">
-          <h1 class="mb-4"><strong>テーマパークをもっと楽しもう！</strong></h1>
-          <p class="lead">あなたしか知らないスポットや<br/>お気に入りの場所を共有してみませんか？</p>
-          <% if user_signed_in? %>
-            <%= link_to '投稿する', new_place_path, class: "btn btn-orange px-3 mb-4 min-vw-30 rounded-pill" %>
-          <% else %>
-            <%= link_to '新規登録', new_user_registration_path, class: "btn btn-orange px-3 mb-4 min-vw-30 rounded-pill" %>
-          <% end %>
-        </div>
-      <!-- </div> -->
-    <!-- </div> -->
+    <div class="top-phrase mt-4 p-2">
+      <h1 class="mb-4">
+        <strong>テーマパークをもっと楽しもう！</strong>
+      </h1>
+      <p class="lead">あなたしか知らないスポットや<br/>お気に入りの場所を共有してみませんか？</p>
+      <% if user_signed_in? %>
+        <%= link_to '投稿する', new_place_path, class: "btn btn-orange px-3 mb-4 min-vw-30 rounded-pill" %>
+      <% else %>
+        <%= link_to '新規登録', new_user_registration_path, class: "btn btn-orange px-3 mb-4 min-vw-30 rounded-pill" %>
+      <% end %>
+    </div>
   </div>
 
   <div class="park-charm my-4">
     <div class="container">
-      <h1 class="under-orange mb-4"><strong>テーマパークは魅力たっぷり</strong></h1>
+      <h1 class="under-orange mb-4">
+        <strong>テーマパークは魅力たっぷり</strong>
+      </h1>
       <div class="card mb-3 w-100">
         <div class="row no-gutters">
           <div class="col-md-4">
@@ -28,7 +28,9 @@
               <h3 class="card-title under-blue">美しい風景</h3>
               <p class="card-text">まるで異空間のような素敵な風景がたくさん！</p>
               <p class="card-text">写真を撮ったり、その風景を眺めて楽しんだり</p>
-              <p class="card-text"><small class="text-muted"></small></p>
+              <p class="card-text">
+                <small class="text-muted"></small>
+              </p>
             </div>
           </div>
         </div>
@@ -43,7 +45,9 @@
               <h3 class="card-title under-blue">季節によって変わる場所</h3>
               <p class="card-text">四季に合わせた場所の変化が楽しめるのも魅力です。</p>
               <p class="card-text">花や飾りなど、その時にしか体験できない楽しみを見つけよう！</p>
-              <p class="card-text"><small class="text-muted"></small></p>
+              <p class="card-text">
+                <small class="text-muted"></small>
+              </p>
             </div>
           </div>
         </div>
