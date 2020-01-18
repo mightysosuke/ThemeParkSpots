@@ -38,10 +38,12 @@
           </li>
         <% else %>
           <li>
-            <%= link_to '新規登録', new_user_registration_path, class: "btn btn-orange px-3 min-vw-30 rounded-pill" %>
+            <%#= link_to '新規登録', new_user_registration_path, class: "btn btn-orange px-3 min-vw-30 rounded-pill" %>
+            <%= link_to '新規登録', new_user_registration_path, id:"new-btn", class: "btn btn-orange" %>
           </li>
           <li>
-            <%= link_to 'ログイン', new_user_session_path, class: "btn btn-inverse-orange min-vw-20 rounded-pill ml-4" %>
+            <%#= link_to 'ログイン', new_user_session_path, class: "btn btn-inverse-orange min-vw-20 rounded-pill ml-4" %>
+            <%= link_to 'ログイン', new_user_session_path, id:"login-btn", class: "btn btn-inverse-orange" %>
           </li>
         <% end %>
       </ul>
