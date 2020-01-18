@@ -1,12 +1,8 @@
 <div class="container my-4">
-  <div class="row">
-    <h2 class="offset-md-5 col-md-2 my-4">新規登録</h2>
-  </div>
-  <div class="row">
-    <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-twitter py-2 pr-3 offset-md-3 col-md-6" do %>
-        <i class="fab fa-twitter mr-3"></i><%= "#{OmniAuth::Utils.camelize(provider)}で新規登録" %>
-      <% end %>
+  <h2 class="text-center my-4">新規登録</h2>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-twitter py-2 pr-3 mx-auto d-block" do %>
+      <i class="fab fa-twitter mr-3"></i><%= "#{OmniAuth::Utils.camelize(provider)}で新規登録" %>
     <% end %>
-  </div>
+  <% end %>
 </div>
