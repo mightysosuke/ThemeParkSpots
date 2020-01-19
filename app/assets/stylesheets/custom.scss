@@ -7,6 +7,12 @@
   white-space: nowrap;
 }
 
+.show-container {
+  img {
+    height: 500px;
+  }
+}
+
 .alert {
   margin-bottom: 0;
   position: fixed;
@@ -29,7 +35,8 @@ main {
 }
 
 #map {
-  height: 500px;
+  // height: 500px;
+  height: 60vh;
   border: solid 5px #FF9E41;
 }
 
@@ -140,19 +147,6 @@ main {
   background-attachment: fixed;
   background-size: cover;
   background-color: #f0f0f0;
-}
-
-.top-hero-container {
-  padding-top: 220px;
-
-  h1 {
-    font-size: 56px;
-    margin-bottom: 20px;
-  }
-
-  h2 {
-    margin-bottom: 60px;
-  }
 }
 
 .form-control {
@@ -276,6 +270,13 @@ main {
 
   .btn-twitter {
     width: 80vw;
+  }
+
+  #map {
+    height: 50vh;
+  }
+  h1 {
+    font-size: 30px;
   }
 }
 
