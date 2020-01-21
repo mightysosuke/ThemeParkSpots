@@ -8,8 +8,12 @@
 }
 
 .show-container {
+  .img-thumbnail {
+    width: 300px;
+    height: 300px;
+  }
   img {
-    height: 500px;
+    object-fit: contain;
   }
 }
 
@@ -274,6 +278,7 @@ main {
 
   #map {
     height: 50vh;
+    max-width: 100vw;
   }
   h1 {
     font-size: 30px;
@@ -283,5 +288,12 @@ main {
 @media (min-width: 768px) and (max-width: 991.98px) {
   .jumbotron {
     height: 70vh;
+  }
+
+  .show-container {
+    .img-thumbnail {
+      width: 210px;
+      height: 210px;
+    }
   }
 }
