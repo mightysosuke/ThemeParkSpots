@@ -1,4 +1,3 @@
-
 .custom-file {
   overflow: hidden;
 }
@@ -39,7 +38,6 @@ main {
 }
 
 #map {
-  // height: 500px;
   height: 60vh;
   border: solid 5px #FF9E41;
 }
@@ -110,7 +108,7 @@ main {
 }
 
 .top-phrase {
-  width: 50vw;
+  width: 60vw;
   margin: auto;
   background-color: rgba(255,255,255,0.8);
 }
@@ -269,7 +267,7 @@ main {
   }
 
   .top-phrase {
-    width: 80vw;
+    width: 70vw;
   }
 
   .btn-twitter {
@@ -295,5 +293,18 @@ main {
       width: 210px;
       height: 210px;
     }
+  }
+
+}
+
+@media (min-width: 992px) {
+  .tb-br{
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+  .sp-br{
+    display: none;
   }
 }
