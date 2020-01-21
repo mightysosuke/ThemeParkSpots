@@ -6,10 +6,8 @@ $(window).ready(function(){
     if (default_size < breakpoint_size) {
         $('#new-btn').addClass('my-2');
         $('#login-btn').addClass('my-2');
-        console.log("aaaa");
     }else{
         $('#new-btn').addClass('px-3 min-vw-30 rounded-pill');
         $('#login-btn').addClass('min-vw-20 rounded-pill ml-4');
-        console.log("bbbb");
     }
 });
