@@ -1,28 +1,24 @@
-<div class="container my-4">
-  <h1>投稿一覧</h1>
+<div class="all-spots-containter">
+  <div class="container my-4">
+    <h1>投稿一覧</h1>
 
-  <div id="map" class="w-auto m-3"></div>
+    <div id="map" class="w-auto m-3"></div>
 
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ひとこと</th>
-          <th>エリア</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+    <div class="table-responsive">
+      <table class="table">
 
-      <tbody>
-        <% @places.each do |place| %>
-          <tr>
-            <td class="min-vw-25"><%= place.name %></td>
-            <td class="w-25"><%= place.area.name %></td>
-            <td><%= link_to '詳細', place, class: "btn btn-orange" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+        <tbody>
+          <% @places.each do |place| %>
+            <tr>
+              <td><strong>ひとこと</strong><br/>
+                <%= place.name %></td>
+              <td class="area-name"><p class="text-primary bg-blue"><%= place.area.name %></p></td>
+              <td><%= link_to '詳細', place, class: "btn btn-orange my-auto" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
