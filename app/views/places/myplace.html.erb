@@ -11,9 +11,13 @@
             <tr>
               <td><strong>ひとこと</strong><br/>
                 <%= place.name %></td>
-              <td><%= link_to '詳細', place, class: "btn btn-orange mx-3 mx-md-4" %>
-              <%= link_to '編集', edit_place_path(place), class: "btn btn-orange mx-3 mx-md-4" %>
-              <%= link_to '削除', place, method: :delete, data: { confirm: '本当にこのスポットを削除してもよろしいですか？' }, class: "btn btn-danger mx-3 mx-md-4" %></td>
+              <td>
+                <div class="btns">
+                  <%= link_to '詳細', place, class: "btn btn-orange mx-md-4" %>
+                  <%= link_to '編集', edit_place_path(place), class: "btn btn-orange mx-md-4" %>
+                  <%= link_to '削除', place, method: :delete, data: { confirm: '本当にこのスポットを削除してもよろしいですか？' }, class: "btn btn-danger mx-md-4" %>
+                </div>
+              </td>
             </tr>
           <% end %>
         </tbody>
