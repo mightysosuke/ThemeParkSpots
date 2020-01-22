@@ -1,33 +1,23 @@
-var marker = [];
-var infoWindow = [];
-var currentInfoWindow = null;
+let marker = [];
+let infoWindow = [];
+let currentInfoWindow = null;
 
 // マーカーが一覧として表示されるマップを表示
 function initViewMap() {
-  var map = displayMap();
+  let map = displayMap();
 
   // gonを使用してplaceの値を取得
-  for (var i in gon.places) {
-    var lat = Number(gon.places[i].latitude);
-    var lng = Number(gon.places[i].longitude);
-    var latLng = {lat, lng};
-    var name = gon.places[i].name;
-    var dsc = gon.places[i].description;
+  for (let i in gon.places) {
+    let lat = Number(gon.places[i].latitude);
+    let lng = Number(gon.places[i].longitude);
+    let latLng = {lat, lng};
+    let name = gon.places[i].name;
+    let dsc = gon.places[i].description;
 
-    // イメージが登録されていない場合、ウインドウに表示しない
-    if (gon.url[i] == null) {
-      var content = '<div class="window-box"><h5 class="under">' + name + '</h5>' +
-                    '<div class="border rounded m-2 p-2"><p>' +
-                    dsc +
-                    '</p></div>' +
-                    '</div>';
-    } else {
-      var content = '<div class="window-box"><h5 class="under">' + name + '</h5>' +
-                    '<div class="border rounded m-2 p-2"><p>' +
-                    dsc +
-                    '</p></div>' +
-                    '<img src="'+gon.url[i]+'" class="window-image" /></div>'; // イメージのURLを取得して代入
-    }
+    // ウィンドウに表示するコンテンツ
+    let content = '<div class="window-box"><h5 class="under">' + name + '</h5>' +
+                  '<img src="'+gon.url[i]+'" class="window-image" /></div>'; // イメージのURLを取得して代入
+
 
     // マーカーの追加
     marker[i] = new google.maps.Marker({
@@ -59,14 +49,14 @@ function initViewMap() {
 
 // 新規投稿を追加する時のマップを表示
 function initNewMap() {
-  var map = displayMap();
+  let map = displayMap();
 
   // クリックイベントを追加
   map.addListener('click', function(e) {
     getClickLatLng(e.latLng, map);
   });
 
-  var marker;
+  let marker;
 
   // マーカーを設置
   function placeMarker(lat_lng) {
@@ -87,11 +77,11 @@ function initNewMap() {
 
 // 投稿を編集する時のマップを表示
 function initEditMap() {
-  var map = displayMap();
+  let map = displayMap();
 
-  var lat = Number(gon.lat);
-  var lng = Number(gon.lng);
-  var latLng = {lat, lng};
+  let lat = Number(gon.lat);
+  let lng = Number(gon.lng);
+  let latLng = {lat, lng};
 
   marker = new google.maps.Marker({
     position: latLng,
@@ -103,7 +93,7 @@ function initEditMap() {
     getClickLatLng(e.latLng, map);
   });
 
-  var marker;
+  let marker;
 
   // マーカーを設置
   function placeMarker(lat_lng) {
@@ -135,7 +125,7 @@ function getClickLatLng(lat_lng, map) {
 
 // マップを表示するだけ
 function displayMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
+  let map = new google.maps.Map(document.getElementById('map'), {
     zoom: 17,
     center: {lat: 35.6263164, lng: 139.8852073},
     mapTypeId: 'satellite'
@@ -145,17 +135,17 @@ function displayMap() {
 
 // 投稿詳細画面のマップを表示
 function initShowMap() {
-  var lat = Number(gon.lat);
-  var lng = Number(gon.lng);
-  var map = new google.maps.Map(document.getElementById('map'), {
+  let lat = Number(gon.lat);
+  let lng = Number(gon.lng);
+  let map = new google.maps.Map(document.getElementById('map'), {
     zoom: 19,
     center: {lat: lat, lng: lng},
     mapTypeId: 'satellite'
   });
 
-  var latLng = {lat, lng};
+  let latLng = {lat, lng};
 
-  var marker = new google.maps.Marker({
+  let marker = new google.maps.Marker({
     position: latLng,
     map: map
   });
