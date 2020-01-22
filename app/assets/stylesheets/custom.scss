@@ -34,13 +34,12 @@
   }
 
   table tr {
-  border: 2px solid #fff;
+    border: 2px solid #fff;
   }
 
   table tr {
     background-color: #e6f2f5;
   }
-
   @media screen and (max-width: 768px) {
     table {
       border: 0;
@@ -66,7 +65,43 @@
     table .btn {
       width: 100%;
     }
+  }
+}
 
+.myplace {
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  table tr {
+    border: 2px solid #fff;
+  }
+
+  table tr {
+    background-color: #e6f2f5;
+  }
+  @media screen and (max-width: 768px) {
+    table {
+      border: 0;
+      width: 100%;
+    }
+
+    table tr {
+      display: block;
+      margin-bottom: 0.625em;
+    }
+
+    table td {
+      display: block;
+      font-size: 1em;
+      position: relative;
+      border: 0;
+    }
+
+    table .btn {
+      width: 70px;
+    }
   }
 }
 
@@ -225,7 +260,7 @@ main {
 .show > .btn-twitter.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
-/* hover時（マウスカーソルを重ねた時）の色*/
+/* hover時の色*/
 .btn-twitter:hover {
   color: #fff;
   background-color: #1891ED;
@@ -247,7 +282,7 @@ main {
 .show > .btn-orange.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
-/* hover時（マウスカーソルを重ねた時）の色*/
+/* hover時の色*/
 .btn-orange:hover {
   color: #fff;
   background-color: #FF8500;
@@ -269,7 +304,7 @@ main {
 .show > .btn-inverse-orange.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
-/* hover時（マウスカーソルを重ねた時）の色*/
+/* hover時の色*/
 .btn-inverse-orange:hover {
   color: #fff;
   background-color: #FF8500;
@@ -355,19 +390,6 @@ main {
   }
 }
 @media (min-width: 576px) {
-  // .all-spots-containter {
-  //   .table tr {
-  //     display:block;
-  //     margin-bottom: 10px;
-  //   }
-  //   .table td:first-child,
-  //   .table td:nth-child(2) {
-  //     display: list-item;
-  //     width: 90%;
-  //     margin-left: 10%;
-  //     // border: none;
-  //   }
-  // }
   .sp-br {
     display: none;
   }
