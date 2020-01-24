@@ -10,30 +10,34 @@
   <% end %>
 
   <div class="form-group row">
-    <%= f.label :name, class: "col-md-1 col-form-label" %>
-    <%= f.text_field :name, class: "col-md-7" %>
+    <%= f.label :name, class: "col-3 col-md-2 col-form-label" %>
+    <%= f.text_field :name, class: "col-8 col-md-9" %>
   </div>
 
   <div class="form-group row">
-    <%= f.label :description, class: "col-md-1 col-form-label" %>
-    <%= f.text_area :description, class: "col-md-7" %>
+    <%= f.label :description, class: "col-3 col-md-2 col-form-label" %>
+    <%= f.text_area :description, class: "col-8 col-md-9" %>
   </div>
 
   <% if controller.action_name == 'edit' %>
-  <div class="form-group row">
-    <%= f.label :park, class: "col-md-1 col-form-label" %>
-    <%= f.collection_select :park_id, Park.all, :id, :name, {selected: place.area.park.id}, {class: 'edit-park col-md-3'} %>
-    <%= f.label :area, class: "col-md-1 col-form-label" %>
-    <%= f.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}, {selected: place.area_id}), {}, {class: 'edit-area col-md-3'} %>
-  </div>
+    <div class="form-group row">
+      <%= f.label :park, class: "col-3 col-md-2 col-form-label" %>
+      <%= f.collection_select :park_id, Park.all, :id, :name, {selected: place.area.park.id}, {class: 'edit-park col-8 col-md-9'} %>
+    </div>
+    <div class="form-group row">
+      <%= f.label :area, class: "col-3 col-md-2 col-form-label" %>
+      <%= f.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}, {selected: place.area_id}), {}, {class: 'edit-area col-8 col-md-9'} %>
+    </div>
 
   <% else %>
-  <div class="form-group row">
-    <%= f.label :park, class: "col-md-1 col-form-label" %>
-    <%= f.collection_select :park_id, Park.all, :id, :name,  {prompt: "パークを選択してください"}, {class: 'new-park col-md-3'} %>
-    <%= f.label :area, class: "col-md-1 col-form-label" %>
-    <%= f.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}), {prompt: "エリアを選択してください"}, {class: 'new-area col-md-3'} %>
-  </div>
+    <div class="form-group row">
+      <%= f.label :park, class: "col-3 col-md-2 col-form-label" %>
+      <%= f.collection_select :park_id, Park.all, :id, :name, {prompt: "パークを選択してください"}, {class: 'new-park col-8 col-md-9'} %>
+    </div>
+    <div class="form-group row">
+      <%= f.label :area, class: "col-3 col-md-2 col-form-label" %>
+      <%= f.select :area_id, options_for_select(Area.all.map{|area|[area[:name], area[:id], {'data-val'=>area[:park_id]}]}), {prompt: "エリアを選択してください"}, {class: 'new-area col-8 col-md-9'} %>
+    </div>
 
   <% end %>
 
@@ -51,7 +55,7 @@
 
   <div class="form-group row input-photo mb-2">
     <div class="input-group">
-      <div class="custom-file col-md-6 offset-md-1">
+      <div class="custom-file col-md-9 col-8 offset-1">
         <%= f.file_field :images, multiple: true ,class: "custom-file-input", id: "button-addon", aria: {describedby: "button-addon"} %>
         <%= f.label "ファイルを選択...", class: "custom-file-label", for: "button-addon", data: {browse: "参照"} %>
       </div>
@@ -62,7 +66,7 @@
   </div>
 
   <div class="row">
-    <div id="map" class="col-md-7 offset-md-1 my-4"></div>
+    <div id="map" class="col-10 offset-1 my-4"></div>
   </div>
 
 <div class="actions form-group mt-3">
