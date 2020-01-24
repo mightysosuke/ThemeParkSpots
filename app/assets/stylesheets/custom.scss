@@ -107,7 +107,6 @@
     table .btns {
       text-align: center;
     }
-
   }
 }
 
@@ -355,6 +354,18 @@ main {
   display: block;
   width: 100px;
   height: 50px;
+}
+
+footer {
+  background-color: #444d53;
+  height: 100px;
+}
+
+.copyright {
+  color: #aab3b9;
+  margin: 0;
+  text-align: center;
+  line-height: 100px;
 }
 @media (max-width: 767.98px) {
   .jumbotron {
